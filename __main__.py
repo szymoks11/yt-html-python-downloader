@@ -166,6 +166,3 @@ def browse_button():
 
 
 eel.start("index.html", size=(500, 401))
-
-if __name__ == '__main__':
-    run()
