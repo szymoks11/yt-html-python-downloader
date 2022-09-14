@@ -2,7 +2,7 @@ import os
 from tkinter import filedialog
 from pytube import YouTube
 import ffmpeg
-
+from settings import dark_theme_setting
 import eel
 eel.init("web")
 
@@ -72,11 +72,9 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
         input_video = ffmpeg.input("video.mp4")
 
         input_audio = ffmpeg.input("audio.mp4")
-
         ffmpeg.concat(input_video, input_audio, v=1, a=1).output(
             path + final_name
-        ).run()
-
+        ).run(overwrite_output=True)
         os.remove("video.mp4")
         os.remove("audio.mp4")
         if custom_name == "":
@@ -98,7 +96,7 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
             + stop
             + " -c:a copy "
             + os.path.join(path, "clip.mp4")
-        )
+        ).run(overwrite_output=True)
         os.system(command)
         os.remove("audio.mp4")
         if custom_name == "":
@@ -138,7 +136,7 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
 
         ffmpeg.concat(input_video, input_audio, v=1, a=1).output(
             path + final_name
-        ).run()
+        ).run(overwrite_output=True)
 
         os.remove("video.mp4")
         os.remove("audio.mp4")
@@ -150,7 +148,7 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
             + stop
             + " -c:a copy "
             + os.path.join(path, "clip.mp4")
-        )
+        ).run(overwrite_output=True)
         os.system(command)
         os.remove(path+final_name)
         if custom_name == "":
@@ -163,6 +161,24 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
 def browse_button():
     file_path = filedialog.askdirectory()
     return file_path
+
+
+@eel.expose
+def dark_theme(dark_theme_counter):
+    light = dark_theme_counter % 2 == 0
+    dark = dark_theme_counter % 2 != 0
+    f = open("settings.py", "w")
+    if light:
+        f.write("dark_theme_setting = 'light'")
+        f.close()
+    elif dark:
+        f.write("dark_theme_setting = 'dark'")
+        f.close()
+
+
+@eel.expose
+def theme_setting():
+    return dark_theme_setting
 
 
 eel.start("index.html", size=(500, 401))

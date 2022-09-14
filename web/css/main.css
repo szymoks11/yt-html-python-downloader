@@ -1,3 +1,8 @@
+.dark-mode{
+    background-color: #191919 !important;
+    color: white !important;
+  }
+
 #header {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -28,8 +33,14 @@
 }
 #header .extra-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: right;
+    margin-top: 12px;
+}
+#header #dark_theme_input i {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
 }
 #header .extra-links a {
     font-size: 15px;
@@ -106,6 +117,28 @@ div[id*="section"] .content {
 #clip {
     margin-left: 10px;
 }
+
+#clip.dark, #audio.dark, #output-directory-search.dark{
+    color: white;
+}
+
+input.dark {
+    background-color: black;
+    color: white;
+}
+
+input:focus {
+    border-color: red;
+
+}
+
+input.dark::placeholder{
+    color: white;
+}
+input[type=text].dark {
+    color: white;
+}
+
 #audio:hover, #clip:hover {
     background-color: var(--primary-darker);
 }
