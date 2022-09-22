@@ -8,7 +8,8 @@ eel.init("web")
 
 
 @eel.expose
-def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
+def add(data_1, value0, value1, start_data, stop_data, name_data, output_data, Global_res):
+    print(Global_res)
     link = str(data_1)
     start = str(start_data)
     stop = str(stop_data)
@@ -17,7 +18,7 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
     yt = YouTube(yt_video)
     name = str(yt.title)
     if not output_data:
-        path = "./output/"
+        path = str('./output/')
     else:
         path = output_data + "/"
     value0_true = value0 % 2
@@ -59,17 +60,11 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
             pass
         elif file_exists == False:
             os.mkdir("output")
-        video = yt.streams.first()
-        video = (
-            yt.streams.filter(adaptive=True, file_extension="mp4")
-            .order_by("resolution")
-            .desc()
-            .first()
-            .download(filename="video.mp4")
-        )
+        yt.streams.filter(adaptive=True, file_extension="mp4",
+                          res=Global_res).last().download(filename="video.mp4")
         audio.download(filename="audio.mp4")
 
-        input_video = ffmpeg.input("video.mp4")
+        input_video = ffmpeg.input("video.mp4")\
 
         input_audio = ffmpeg.input("audio.mp4")
         ffmpeg.concat(input_video, input_audio, v=1, a=1).output(
@@ -96,7 +91,7 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
             + stop
             + " -c:a copy "
             + os.path.join(path, "clip.mp4")
-        ).run(overwrite_output=True)
+        )
         os.system(command)
         os.remove("audio.mp4")
         if custom_name == "":
@@ -120,14 +115,8 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
             pass
         elif file_exists == False:
             os.mkdir("output")
-        video = yt.streams.first()
-        video = (
-            yt.streams.filter(adaptive=True, file_extension="mp4")
-            .order_by("resolution")
-            .desc()
-            .first()
-            .download(filename="video.mp4")
-        )
+        yt.streams.filter(adaptive=True, file_extension="mp4",
+                          res=Global_res).last().download(filename="video.mp4")
         audio.download(filename="audio.mp4")
 
         input_video = ffmpeg.input("video.mp4")
@@ -135,22 +124,23 @@ def add(data_1, value0, value1, start_data, stop_data, name_data, output_data):
         input_audio = ffmpeg.input("audio.mp4")
 
         ffmpeg.concat(input_video, input_audio, v=1, a=1).output(
-            path + final_name
+            path + "before_clip.mp4"
         ).run(overwrite_output=True)
 
         os.remove("video.mp4")
         os.remove("audio.mp4")
+        print(str(path + final_name))
         command = (
             "ffmpeg -fflags +discardcorrupt -ss "
             + start
-            + " -i " + os.path.join(path, final_name)
+            + " -i " + os.path.join(path + "before_clip.mp4")
             + " -c:v copy -to "
             + stop
             + " -c:a copy "
-            + os.path.join(path, "clip.mp4")
-        ).run(overwrite_output=True)
+            + os.path.join(path + "clip.mp4")
+        )
         os.system(command)
-        os.remove(path+final_name)
+        os.remove(path+"before_clip.mp4")
         if custom_name == "":
             os.replace(path + "clip.mp4", path + final_name)
         else:
@@ -181,4 +171,18 @@ def theme_setting():
     return dark_theme_setting
 
 
-eel.start("index.html", size=(500, 401))
+@eel.expose
+def quality_list(quality):
+    video_resolutions = []
+    yt = YouTube(str(quality))
+    for stream in yt.streams.order_by('resolution'):
+        video_resolutions.append(stream.resolution)
+
+    result = [i for n, i in enumerate(
+        video_resolutions) if i not in video_resolutions[:n]]
+
+    print(result)
+    return result
+
+
+eel.start("index.html", size=(500, 421))
