@@ -110,7 +110,7 @@ function call_back_quality(result) {
 	}
 	if (quality[8] != undefined) {
 		document.getElementById("4320p").classList.add('visible');
-		//document.getElementById("4320p").classList.remove('hidden');
+		document.getElementById("4320p").classList.remove('hidden');
 	}
 	if (quality[7] != undefined) {
 		document.getElementById("2160p").classList.add('visible');
