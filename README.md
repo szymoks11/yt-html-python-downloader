@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/szymoks11/yt-html-python-downloader/blob/main/.github/main.png)
 
 There are many great Youtube videos and audio downloader available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a app to download all types of files in choosen quality, download only parts of Video and Audio files, set custom names, set output directory.
 
