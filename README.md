@@ -72,11 +72,11 @@ Here's why:
    ```sh
    git clone https://github.com/szymoks11/yt-html-python-downloader.git
    ```
-3. Install requirements
+2. Install requirements
    ```sh
    pip install -r requirements.txt
    ```
-4. Start app
+3. Start app
    ```js
    python3 ./main.py
    ```
@@ -113,7 +113,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@szymon7271](https://twitter.com/szymon7271) - flisszymo@wp.pl
+szymoks11 - [@szymon7271](https://twitter.com/szymon7271) - flisszymo@wp.pl
 
 Project Link: [https://github.com/szymoks11/yt-html-python-downloader](https://github.com/szymoks11/yt-html-python-downloader)
 
