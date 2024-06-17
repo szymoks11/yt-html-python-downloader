@@ -1,0 +1,110 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #FBFBFB;
+    --primary: #458BC6;
+    --primary-darker: #1c79c7;
+    --primary-transparent: rgba(28, 121, 199, 0.1);
+    --error: red;
+    --unselected: lightgrey;
+    --disabled: #808080;
+    --title: #666666;
+    --warning-background: #fff3cd;
+    --warning-border: #a0987c;
+    --border-radius: 4px;
+}
+
+body {
+    background-color: var(--background);
+    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    margin: 0 18px 10px 18px;
+}
+
+/* Layout */
+.mid {
+    margin: auto;
+    max-width: 800px;
+}
+
+/* Typography */
+h2 {
+    font-weight: normal;
+    font-size: 25px;
+    margin: 10px 0 2px 0;
+}
+
+h2 > small {
+    font-size: 13px;
+}
+
+/* Form Elements */
+button, input, select {
+    border: 1px solid var(--primary);
+    border-radius: var(--border-radius);
+    padding: 4px;
+    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    cursor: pointer;
+    background: transparent;
+    padding: 3px 8px;
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    transition: border 0.3s, background 0.3s;
+}
+
+button:not(.selected):not(.unselected):hover {
+    background: var(--primary-transparent);
+}
+
+button.selected, button.unselected:hover {
+    border-color: var(--primary);
+}
+
+button.unselected {
+    border-color: var(--unselected);
+    color: var(--unselected);
+}
+
+button.large {
+    border-width: 3px;
+    padding: 8px;
+}
+
+/* Icons */
+.info_icon {
+    background: url("../img/favicon.ico") no-repeat;
+    height: 10px;
+    width: 10px;
+    margin-left: .25em;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* Layout for File Path Browse */
+.filepath-browse-layout {
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: 1fr 120px;
+}
+
+/* Utility Classes */
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Youtube Downloader</title>
+   <link rel="stylesheet" href="css/general.css">
+   <link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+   <div class="mid">
+      <div id="header">
+         <div class="title">
+            <a href="https://github.com/szymoks11/yt-html-python-downloader" target="_blank"><img
+                  src="./img/favicon.ico" /></a>
+            <a href="https://github.com/szymoks11/yt-html-python-downloader" target="_blank">
+               <h1>Youtube Downloader</h1>
+            </a>
+         </div>
+
+         <div class="extra-links">
+            <div id="dark_theme_input">
+               <i id="dark_theme_icon" onclick="myFunction()" class="fa-solid fa-moon"></i>
+               <!-- <img onclick="myFunction()" src="img/dark_theme.png" alt="Dark theme toggle" /> -->
+            </div>
+            <div>
+               <a href="https://github.com/szymoks11/yt-html-python-downloader" target="_blank">
+                  GitHub
+                  <img src="https://github.githubassets.com/favicons/favicon.png" alt="GitHub favicon" />
+               </a>
+            </div>
+         </div>
+      </div>
+      <div>
+         <h2>Video</h2>
+         <div class="filepath-browse-layout">
+            <input id="link" name="link" placeholder="Search" required>
+         </div>
+      </div>
+      <div>
+         <h2>
+            <span>Options</span>
+         </h2>
+         <div class="Buttons">
+            <button id="audio" class="large">
+               Only Audio
+            </button>
+            <button id="clip" class="large">
+               Clip
+            </button>
+            <div id="start" hidden>Start
+               <input id="start_input" type="text" />
+            </div>
+            <div id="stop" hidden>Stop
+               <input id="stop_input" type="text" />
+            </div>
+            <div class="dropdown">
+               <button id="dropbtn">quality</button>
+               <div class="dropdown-content">
+                  <a class="dropdown-btn" id="144p">144p</a>
+                  <a class="dropdown-btn" id="240p">240p</a>
+                  <a class="dropdown-btn" id="360p">360p</a>
+                  <a class="dropdown-btn" id="480p">480p</a>
+                  <a class="dropdown-btn" id="720p">720p</a>
+                  <a class="dropdown-btn" id="1080p">1080p</a>
+                  <a class="dropdown-btn" id="1440p">1440p</a>
+                  <a class="dropdown-btn" id="2160p">2160p</a>
+                  <a class="dropdown-btn" id="4320p">4320p</a>
+
+               </div>
+            </div>
+         </div>
+         <div id="section-settings">
+            <div class="header noselect" onclick="expandSection('settings')">
+               <img src="img/chevron-square-up.svg" alt="Advanced Section Chevron" />
+               <h2>Settings</h2>
+            </div>
+            <div class="content">
+               <div>
+                  <div class="option-container input">
+                     <span>
+                        <span>Output Directory</span>
+                        <span title="The directory to put the output in. Will be created if it doesn't exist"
+                           class="info_icon"></span>
+                     </span>
+                     <div class="filepath-browse-layout">
+                        <input id="output-directory" placeholder="DIRECTORY">
+                        <button onclick="getResult()" id="output-directory-search">Browse</button>
+                     </div>
+                  </div>
+                  <div class="option-container input"><span>Custom Name<span class="info_icon"></span></span><input
+                        id="name_input" placeholder="VALUE"></div>
+               </div>
+            </div>
+            <div id="Download-button-wrapper">
+               <button type="button" id="Download-button" onclick="summation()">
+                  Download
+               </button>
+            </div>
+         </div>
+         <script type="text/javascript" src="eel.js"></script>
+         <script type="text/javascript" src="js/main.js"></script>
+         <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+         <script type="text/javascript" src="js/my_jquery.js"></script>
+</body>
+
+</html>

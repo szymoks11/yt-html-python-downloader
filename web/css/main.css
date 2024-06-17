@@ -1,0 +1,404 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #FBFBFB;
+    --primary: #458BC6;
+    --primary-darker: #1c79c7;
+    --primary-transparent: rgba(28, 121, 199, 0.1);
+    --error: red;
+    --unselected: lightgrey;
+    --disabled: #808080;
+    --title: #666666;
+    --warning-background: #fff3cd;
+    --warning-border: #a0987c;
+    --border-radius: 4px;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #191919 !important;
+    color: white !important;
+}
+
+/* Body Styles */
+body {
+    background-color: var(--background);
+    font-family: 'Nunito', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    margin: 0 18px 10px 18px;
+}
+
+/* Header Styles */
+#header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-top: 18px;
+}
+
+#header .title {
+    display: flex;
+    align-items: center;
+}
+
+#header .title img {
+    height: 41px;
+}
+
+#header .title h1 {
+    font-weight: 100;
+    font-size: 30px;
+    color: var(--title);
+    margin: 0 0 0 10px;
+}
+
+#header .title>a {
+    display: inherit;
+    text-decoration: none;
+}
+
+#header .title>a:hover {
+    mask-image: none;
+    mask-size: none;
+    -webkit-mask-image: linear-gradient(-75deg, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.50) 50%, rgb(0, 0, 0) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s forwards;
+}
+
+#header .extra-links {
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    margin-top: 12px;
+}
+
+#header #dark_theme_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: 4px;
+}
+
+#header .extra-links a {
+    font-size: 15px;
+    text-decoration: none;
+    filter: grayscale(1);
+    transition: filter 0.3s;
+    color: var(--primary);
+}
+
+#header .extra-links a:hover {
+    filter: grayscale(0);
+}
+
+#header .extra-links a img {
+    height: 20px;
+    vertical-align: text-bottom;
+}
+
+/* Section Styles */
+div[id*="section"] {
+    margin-top: 12px;
+}
+
+div[id*="section"] .header {
+    display: flex;
+    cursor: pointer;
+}
+
+div[id*="section"] .header img {
+    height: 30px;
+    transition: transform 0.4s;
+    transform: rotate(180deg);
+}
+
+div[id*="section"] .header h2 {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+
+div[id*="section"] .content {
+    display: none;
+    margin: 5px 10px 0 10px;
+}
+
+/* Option Container Styles */
+.option-container {
+    margin-top: 4px;
+}
+
+.option-container>span {
+    margin-right: 10px;
+}
+
+.option-container.input {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 5px;
+}
+
+/* Download Button Styles */
+#Download-button-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#Download-button {
+    width: 100%;
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+    height: 38px;
+    padding: 0 30px;
+    text-align: center;
+    box-sizing: border-box;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+}
+
+#Download-button:hover, #open-output-folder-button:hover {
+    background-color: var(--primary-darker);
+}
+
+#Download-button:disabled {
+    background-color: var(--disabled);
+    border-color: var(--disabled);
+    cursor: not-allowed;
+}
+
+/* Output Directory Styles */
+#output-directory {
+    width: 110%;
+    margin-left: -19px;
+}
+
+/* Clip and Audio Styles */
+#clip {
+    display: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#clip.dark, #audio.dark, #output-directory-search.dark {
+    color: white;
+}
+
+#audio {
+    margin-right: 8px;
+}
+
+#audio:hover, #clip:hover {
+    background-color: var(--primary-darker);
+}
+
+/* Input Styles */
+input.dark {
+    background-color: black;
+    color: white;
+}
+
+input:focus {
+    border-color: red;
+}
+
+input.dark::placeholder {
+    color: white;
+}
+
+input[type=text].dark {
+    color: white;
+}
+
+/* Button Styles */
+.button.large.color {
+    background-color: var(--primary);
+}
+
+/* Start and Stop Button Styles */
+#start_input, #stop_input {
+    width: 45px;
+}
+
+#stop_input {
+    margin-right: 5px;
+}
+
+#stop {
+    margin-left: 5px;
+}
+
+/* Dropdown Button Styles */
+#dropbtn {
+    width: 100%;
+    border: 3px solid var(--primary);
+    font-size: 12px;
+    color: black;
+    margin-top: 7px;
+    height: 38px;
+    text-align: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.1s;
+    margin-bottom: 5px;
+}
+
+#dropbtn.dark {
+    color: white;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #191919;
+    min-width: 125px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    font-size: 10px;
+    padding: 3px 4px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a.hidden {
+    display: none;
+}
+
+.dropdown-content a.visible {
+    display: block;
+}
+
+.dropdown-content a.col {
+    background-color: var(--primary);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-darker);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn:hover {
+    background-color: var(--primary-darker);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+/* Dropdown Button Animation Styles */
+.dropdown-btn {
+    padding: 25px 30px;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.dropdown-btn:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
+}
+
+.dropdown-btn span {
+    position: absolute;
+    display: block;
+}
+
+.dropdown-btn span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#03e9f4);
+    animation: animate1 1s linear infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+.dropdown-btn span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#03e9f4);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+@keyframes animate2 {
+    0% {
+        top: -100%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+
+.dropdown-btn span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#03e9f4);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+}
+
+@keyframes animate3 {
+    0% {
+        right: -100%;
+    }
+    50%, 100% {
+        right: 100%;
+    }
+}
+
+.dropdown-btn span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#03e9f4);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+
+@keyframes animate4 {
+    0% {
+        bottom: -100%;
+    }
+    50%, 100% {
+        bottom: 100%;
+    }
+}
